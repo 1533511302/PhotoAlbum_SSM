@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="top.maniy.mapper.PhotoMapper">
+
+
+
+	<select id="getPhotosByAlbumId" resultType="Photo">
+		SELECT * FROM photo WHERE albumid=#{albumid}
+	</select>
+
+	<select id="getCountByAlbumId" resultType="int">
+		SELECT COUNT(*) count FROM photo WHERE albumid=#{albumid}
+	</select>
+
+
+	<select id="getPhotosByAlbumIdNum" resultType="Photo">
+		SELECT * FROM photo WHERE albumid=#{albumId} ORDER BY updatetime DESC LIMIT 0,#{num}
+	</select>
+</mapper>
