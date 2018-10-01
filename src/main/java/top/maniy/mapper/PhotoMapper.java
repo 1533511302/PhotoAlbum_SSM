@@ -15,7 +15,7 @@ public interface PhotoMapper {
     //根据相册id获取 相册下的图片
     List<Photo> getPhotosByAlbumId(Integer AlbumId);
     //保存图片
-    //boolean savePhoto(Photo photo);
+     int savePhoto(Photo photo);
     //根据图片id删除图片
     //boolean deletePhotoByPhotoId(Integer photoId);
     //

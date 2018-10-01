@@ -18,4 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getPhotosByAlbumIdNum" resultType="Photo">
 		SELECT * FROM photo WHERE albumid=#{albumId} ORDER BY updatetime DESC LIMIT 0,#{num}
 	</select>
+
+
+	<insert id="savePhoto" parameterType="Photo">
+		INSERT INTO photo (photoname,albumid,photourl,introduce) VALUES (#{photoName},#{albumId},#{photoUrl},#{introduce})
+	</insert>
 </mapper>
