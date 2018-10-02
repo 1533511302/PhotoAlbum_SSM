@@ -28,6 +28,21 @@
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 
+	<!-- Springmvc拦截器 -->
+	<mvc:interceptors>
+	<!-- 多个拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<!--拦截标签-->
+			<!--<mvc:mapping path="/**"/>-->
+			<!--/排除拦截的标签-->
+			<!--<mvc:exclude-mapping path="" />-->
+			<!-- 自定义的拦截器类 -->
+			<bean class="top.maniy.interceptor.Interceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
 	<!-- 配置视图解析器 -->
 	<bean	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>

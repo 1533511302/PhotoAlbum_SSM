@@ -6,7 +6,7 @@
 
     <welcome-file-list>
 
-        <welcome-file>index</welcome-file>
+        <welcome-file>toLogin</welcome-file>
 
     </welcome-file-list>
     <!-- 配置spring -->
@@ -57,7 +57,7 @@
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
         <!-- 所有的请求都进入springMVC -->
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/toLogin</url-pattern>
     </servlet-mapping>
 
 </web-app>

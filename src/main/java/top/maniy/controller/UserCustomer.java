@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.maniy.entity.User;
@@ -28,7 +29,7 @@ public class UserCustomer {
     private UserService userService;
 
 
-    @RequestMapping(value ="index")
+    @RequestMapping(value ="toLogin",method = RequestMethod.GET)
     public String index() {
 
 
@@ -36,20 +37,20 @@ public class UserCustomer {
     }
 
 
-    @RequestMapping(value = "/user")
+    @RequestMapping(value = "/user" )
     @ResponseBody
     public List<User> getUser(){
         return userService.findAllUser();
     }
 
-    @RequestMapping(value = "/toLogin")
+    @RequestMapping(value = "/toLogin",method = RequestMethod.POST)
     @ResponseBody
     public String login(HttpServletRequest request,@RequestParam("username") String username, @RequestParam("password") String password){
-        //return userService.findUserByUsernameAndPassword("root","123456");
+
         System.out.println(username);
         System.out.println(password);
         User user =userService.findUserByUsernameAndPassword(username,password);
-        System.out.println(user);
+
         if(user!=null){
             HttpSession session=request.getSession();
             session.setAttribute("user",user);

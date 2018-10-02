@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import top.maniy.entity.Album;
 import top.maniy.entity.AlbumVO;
+import top.maniy.entity.User;
 import top.maniy.service.AlbumService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +29,10 @@ public class AlbumCustomer {
     private AlbumService albumService;
 
    @RequestMapping(value = "/albumPage")
-    public ModelAndView getAlbumByUserId(ModelMap modelMap){
-       List<AlbumVO> albumVOList =albumService.getAlbumsByUserId(1);
+    public ModelAndView getAlbumByUserId(HttpServletRequest request,ModelMap modelMap){
+       User user= (User) request.getSession().getAttribute("user");
+
+       List<AlbumVO> albumVOList =albumService.getAlbumsByUserId(user.getUserId());
        System.out.println(albumVOList);
        Map<String,Object> data =new HashMap<String, Object>();
        data.put("albumVOList",albumVOList);
@@ -36,8 +40,9 @@ public class AlbumCustomer {
        return new ModelAndView("album",data);
    }
    @RequestMapping(value = "/saveAlbum")
-    public String saveAlbum(Album album,ModelMap modelMap){
-       album.setUserId(1);
+    public String saveAlbum(Album album,ModelMap modelMap,HttpServletRequest request){
+       User user= (User) request.getSession().getAttribute("user");
+       album.setUserId(user.getUserId());
        albumService.saveAlbum(album);
 
        return "redirect:albumPage";
