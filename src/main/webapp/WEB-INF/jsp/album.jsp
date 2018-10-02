@@ -30,18 +30,31 @@
 </head>
 <body>
 <div class="albums">
+    <div align="center">
+        <form action="saveAlbum" enctype="multipart/form-data" method="post">
+            <p>添加相册</p>
+            相册名称：<input type="text" name="albumName"/>
+            相册描述：<input type="text" name="introduce"/>
+            <p><input type="submit" value="提交"></p>
+        </form>
 
+    </div>
 
     <div class="albums-inner">
 
-                    <c:forEach var="album" items="${albumList}" varStatus="index">
-                        <div class="albums-tab" >
+        <c:forEach var="album" items="${albumList}" varStatus="index">
+            <div class="albums-tab" >
+                <c:if test="${album.count==0}">
+                    <div class="albums-tab-thumb" onclick="clickAlbum(${album.albumId})">
+                        <img src="<%=basePath%>img/kong.jpg" class="all studio"/>
 
-                            <c:if test="${album.count<4}">
-                                <div class="albums-tab-thumb sim-anim-7" onclick="clickAlbum(${album.albumId})">
+                    </div>
+                </c:if>
+                <c:if test="${album.count<4 && album.count>0}">
+                    <div class="albums-tab-thumb sim-anim-7" onclick="clickAlbum(${album.albumId})">
 
                         <c:forEach var="photo" items="${album.photos}">
-                            <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
+                        <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
 
                         </c:forEach>
                     </div>

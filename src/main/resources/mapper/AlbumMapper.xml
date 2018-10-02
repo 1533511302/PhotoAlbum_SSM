@@ -10,9 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT * FROM album WHERE userid=#{userid}
 	</select>
 
-	<select id="saveAlbum" resultType="Album">
-		INSERT INTO album (albumname,userid,introduce) VALUES (#{albumname},#{userid},#{introduce})
-	</select>
+	<insert id="saveAlbum" parameterType="Album">
+		INSERT INTO album (albumname,userid,introduce) VALUES (#{albumName},#{userId},#{introduce})
+	</insert>
 
 	<select id="deleteAlbumByAlbumId" resultType="int">
 		DELETE from album where albumid=#{albumid}

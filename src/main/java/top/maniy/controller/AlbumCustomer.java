@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import top.maniy.entity.Album;
 import top.maniy.entity.AlbumVO;
 import top.maniy.service.AlbumService;
 
@@ -33,5 +34,12 @@ public class AlbumCustomer {
        data.put("albumVOList",albumVOList);
        modelMap.put("albumList",albumVOList);
        return new ModelAndView("album",data);
+   }
+   @RequestMapping(value = "/saveAlbum")
+    public String saveAlbum(Album album,ModelMap modelMap){
+       album.setUserId(1);
+       albumService.saveAlbum(album);
+
+       return "redirect:albumPage";
    }
 }
