@@ -7,6 +7,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + "/";
+%>
 <html>
 <head>
     <title>相册</title>
@@ -36,7 +41,7 @@
                                 <div class="albums-tab-thumb sim-anim-7" onclick="clickAlbum(${album.albumId})">
 
                         <c:forEach var="photo" items="${album.photos}">
-                            <img src="http://localhost:8080/img/${photo.photoUrl}" class="all studio"/>
+                            <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
 
                         </c:forEach>
                     </div>
@@ -46,7 +51,7 @@
                     <div class="albums-tab-thumb sim-anim-2" onclick="clickAlbum(${album.albumId})">
 
                         <c:forEach var="photo" items="${album.photos}">
-                            <img src="http://localhost:8080/img/${photo.photoUrl}" class="all studio"/>
+                            <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
 
                         </c:forEach>
                     </div>
@@ -55,7 +60,7 @@
                     <div class="albums-tab-thumb sim-anim-9" onclick="clickAlbum(${album.albumId})">
 
                         <c:forEach var="photo" items="${album.photos}">
-                            <img src="http://localhost:8080/img/${photo.photoUrl}" class="all studio"/>
+                            <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
 
                         </c:forEach>
                     </div>
