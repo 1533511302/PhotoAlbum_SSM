@@ -17,6 +17,24 @@
     <title>相册</title>
     <link href="album/css/main.css" rel="stylesheet" type="text/css"/>
     <link href="album/css/sim-prev-anim.css" rel="stylesheet" type="text/css" />
+    <script src="img/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script>
+
+        function clickPhoto(PhotoId,photoUrl) {
+            $(".albums-inner").hide();
+            $(".albums-tab-boost").show(500,function () {
+                $(".albums-tab-boost img").attr("src","<%=basePath%>img/"+photoUrl);
+            });
+
+        };
+        function clickBoost() {
+            $(".albums-tab-boost").hide();
+            $(".albums-inner").show();
+
+        }
+
+
+    </script>
 </head>
 <body>
 <div class="albums">
@@ -38,7 +56,7 @@
 
 
                <div class="albums-tab" >
-                    <div class="albums-tab-thumb">
+                    <div class="albums-tab-thumb" onclick="clickPhoto(${photo.photoId},'${photo.photoUrl}')">
 
 
                             <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
@@ -53,7 +71,9 @@
 
 
     </div>
-
+    <div align="center" class="albums-tab-boost" style="display: none" onclick="clickBoost()" >
+        <img align=""/>
+    </div>
 </div>
 
 </body>
