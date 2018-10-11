@@ -2,6 +2,7 @@ package top.maniy.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import top.maniy.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +21,9 @@ public class Interceptor implements HandlerInterceptor{
         //URI  /login.action
         String requestURI =request.getRequestURI();
         if(!requestURI.contains("/toLogin")) {
-            String username = (String) request.getSession().getAttribute("user");
-            if(null == username) {
+            User user = (User) request.getSession().getAttribute("user");
+
+            if(null == user) {
                 response.sendRedirect(request.getContextPath()+"/toLogin");
                 return false;
             }

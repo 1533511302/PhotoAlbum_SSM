@@ -59,5 +59,12 @@
         <!-- 所有的请求都进入springMVC -->
         <url-pattern>/toLogin</url-pattern>
     </servlet-mapping>
-
+    <!-- 解除SpringMVC拦截器对静态资源文件的拦截 -->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>*.js</url-pattern>-->
+        <!--<url-pattern>*.css</url-pattern>-->
+        <!--<url-pattern>/assets/*"</url-pattern>-->
+        <!--<url-pattern>/images/*</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>

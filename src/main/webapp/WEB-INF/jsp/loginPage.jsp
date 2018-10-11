@@ -7,11 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
-%>
+<%--<%--%>
+    <%--String path = request.getContextPath();--%>
+    <%--String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()--%>
+            <%--+ path + "/";--%>
+<%--%>--%>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,15 +21,12 @@
     <meta name="keywords" content="HTML5,美观,简洁大气,响应式,第三方登录,网页模板" />
     <meta name="description" content="HTML5美观简洁大气响应式带第三方登录网页模板下载。鼠标经过登录按钮带紫色渐变炫酷动画效果。带有简单的表单验证功能。" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>img/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>img/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>img/fonts/iconic/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>img/css/util.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>img/css/main.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>fonts/util.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/util.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>fonts/util.css">
+    <link rel="stylesheet" type="text/css" href="img/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="img/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="img/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="img/css/util.css">
+    <link rel="stylesheet" type="text/css" href="img/css/main.css">
+    <link rel="stylesheet" type="text/css" href="img/main.css">
 
 </head>
 <script src="img/vendor/jquery/jquery-3.2.1.min.js"></script>
