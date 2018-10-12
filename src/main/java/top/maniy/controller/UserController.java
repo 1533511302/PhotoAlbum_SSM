@@ -34,7 +34,7 @@ import java.util.List;
  * @date 2018/9/29 9:23
  */
 @Controller
-public class UserCustomer {
+public class UserController {
 
 
     @Autowired
