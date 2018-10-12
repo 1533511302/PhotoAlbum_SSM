@@ -1,7 +1,11 @@
 package top.maniy.service;
 
+import org.apache.http.ParseException;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import top.maniy.entity.User;
 
+import java.beans.IntrospectionException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -16,5 +20,7 @@ public interface UserService {
     User findUserByUsernameAndPassword(String username,String password);
 
     List<User> findAllUser();
+
+    public XSSFWorkbook exportExcel()throws InvocationTargetException, ClassNotFoundException, IntrospectionException, ParseException, IllegalAccessException ;
 
 }

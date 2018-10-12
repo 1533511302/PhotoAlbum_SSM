@@ -23,7 +23,7 @@ import java.util.Map;
  * @date 2018/9/30 9:08
  */
 @Controller
-public class AlbumCustomer {
+public class AlbumController {
 
     @Autowired
     private AlbumService albumService;

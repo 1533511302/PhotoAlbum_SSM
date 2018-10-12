@@ -28,7 +28,7 @@ import java.util.UUID;
  * @date 2018/10/1 11:26
  */
 @Controller
-public class PhotoCustomer {
+public class PhotoController {
 
     @Autowired
     private PhotoService photoService;
