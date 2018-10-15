@@ -29,6 +29,9 @@
     </script>
 </head>
 <body>
+<div style="height: 45px;width: 100%;background-color: #3b5998" >
+    <span style="float: left;font-size: 24px;margin-left:30px;margin-top: 6px;">我的相册</span>  <a style="float: right;font-size: 18px;margin-right:30px;margin-top: 10px;background-color: coral" href="logout">退出</a>
+</div>
 <div class="albums">
     <div align="center">
         <form action="saveAlbum" enctype="multipart/form-data" method="post">

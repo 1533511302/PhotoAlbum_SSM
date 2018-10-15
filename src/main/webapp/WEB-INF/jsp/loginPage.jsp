@@ -38,14 +38,22 @@
     //当是数组集合的时候最外层是[]
     function login() {
 
-        var $username= $('#username').val();
-        var $password= $('#password').val();
-        console.log($username);
-        console.log($password);
+
+        var username=$("#username").val();
+        if (username==""){
+            alert("用户名不能为空！");
+            return false;//因为这是submit表单提交 返回false 不进行请求
+        };
+        var password=$("#password").val();
+        if (password==""){
+            alert("密码不能为空！");
+            return false;
+        }
+
         $.ajax({
             type: 'post',
             url: "${pageContext.request.contextPath}/toLogin",
-            data: {username:$username,password:$password},
+            data: {username:username,password:password},
             dataType: "text",
             success: function (data) {
                 var mydata =data;

@@ -172,4 +172,11 @@ public class UserController {
         }
 
     }
+
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String logout(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        session.setAttribute("user",null);
+        return "loginPage";
+    }
 }
