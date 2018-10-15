@@ -54,7 +54,7 @@
                     <div class="albums-tab-thumb sim-anim-7" onclick="clickAlbum(${album.albumId})">
 
                         <c:forEach var="photo" items="${album.photos}">
-                        <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio"/>
+                        <img src="<%=basePath%>img/${photo.photoUrl}" class="all studio" style="width: 290px;height: 200px;"/>
 
                         </c:forEach>
                     </div>

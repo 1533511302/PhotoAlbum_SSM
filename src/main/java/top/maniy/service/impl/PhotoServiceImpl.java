@@ -26,6 +26,11 @@ public class PhotoServiceImpl implements PhotoService{
     }
 
     @Override
+    public boolean deletePhotoByPhotoUrl(String photoUrl) {
+        return photoMapper.deletePhotoByPhotoUrl(photoUrl);
+    }
+
+    @Override
     public int savePhoto(Photo photo) {
         return photoMapper.savePhoto(photo);
     }

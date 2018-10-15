@@ -16,6 +16,9 @@ public interface PhotoService {
     //根据相册id获取相册的图片
     List<Photo> getPhotosByAlbumId(@Param("albumId") Integer albumId);
 
+    //根据图片id删除图片
+    boolean deletePhotoByPhotoUrl(String photoUrl);
+
     //保存图片
     int savePhoto(Photo photo);
 }

@@ -130,13 +130,13 @@
                     <div class="albums-tab-thumb"<%-- onclick="clickPhoto(${photo.photoId},'${photo.photoUrl}')--%>">
 
 
-                            <img  src="<%=basePath%>/img/${photo.photoUrl}" class="all studio"  onclick="clickPhoto('${photo.photoUrl}',this)" />
+                            <img  src="<%=basePath%>/img/${photo.photoUrl}" class="all studio" style="width: 290px;height: 200px;"  onclick="clickPhoto('${photo.photoUrl}',this)" />
 
                     </div>
 
 
                         <div class="albums-tab-text">${photo.photoName}<span>(${photo.introduce})</span></div>
-               <div class="albums-tab-text"><span style="background:palevioletred;"  href="downloadPhoto?photoUrl=${photo.photoUrl}" >下载</span>   <span>删除</span></div>
+               <div class="albums-tab-text"><a  href="downloadPhoto?photoUrl=${photo.photoUrl}" >下载</a>   <a style="background:palevioletred;"  href="deletePhoto?photoUrl=${photo.photoUrl}&albumId=${photo.albumId}">删除</a></div>
 
                 </div>
            </c:forEach>

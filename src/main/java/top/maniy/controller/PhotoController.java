@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import top.maniy.entity.Album;
 import top.maniy.entity.Photo;
 import top.maniy.service.PhotoService;
 
@@ -18,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.Iterator;
 import java.util.List;
@@ -83,7 +85,7 @@ public class PhotoController {
     //下载图片
     @RequestMapping(value = "/downloadPhoto")
     @ResponseBody
-    private String downloadPhoto(HttpServletRequest request, HttpServletResponse resp)throws IOException{
+    private String downloadPhoto(HttpServletRequest request, HttpServletResponse resp,String photoUrl)throws IOException{
 
         System.out.println("图片下载");
 
@@ -93,7 +95,7 @@ public class PhotoController {
         String newPath=path.substring(0,path.indexOf("PhotoAlbum_SSM_war_exploded"))+"img\\";
         System.out.println(newPath);
 //        String path = getServletContext().getRealPath("/") + "upload/images";
-        String filename = request.getParameter("photoUrl");
+        String filename = photoUrl;
         System.out.println(filename);
 
         // System.out.println("路径：" + path + "\t\n文件名：" + filename);
@@ -117,6 +119,30 @@ public class PhotoController {
 
         }
             return null;
+    }
+    @RequestMapping(value = "/deletePhoto")
+    public String deletePhotoById(HttpServletRequest req, HttpServletResponse resp,String photoUrl,Integer albumId) throws IOException{
+
+        HttpSession session =req.getSession();
+
+
+
+        //获取图片位置的绝对路径
+        //获取上传文件的目录
+        String path =req.getSession().getServletContext().getRealPath("/");
+
+        String newPath=path.substring(0,path.indexOf("PhotoAlbum_SSM_war_exploded"))+"img\\";
+        //获取图片名
+
+        File file=new File(newPath,photoUrl);
+        if(file.exists()){
+            //System.out.println(fileName);
+            file.delete();
+        }
+         photoService.deletePhotoByPhotoUrl(photoUrl);
+        return  "redirect:tophoto?albumId="+albumId;
+
+
     }
 
 

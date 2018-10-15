@@ -17,7 +17,7 @@ public interface PhotoMapper {
     //保存图片
      int savePhoto(Photo photo);
     //根据图片id删除图片
-    //boolean deletePhotoByPhotoId(Integer photoId);
+    boolean deletePhotoByPhotoUrl(String photoUrl);
     //
     //Photo getPhotoUpToDate();
     //根据相册id获取图片数量
