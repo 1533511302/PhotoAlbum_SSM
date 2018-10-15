@@ -14,9 +14,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import top.maniy.entity.Photo;
 import top.maniy.service.PhotoService;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -77,5 +79,45 @@ public class PhotoController {
 
         return "redirect:tophoto?albumId="+albumId;
     }
+
+    //下载图片
+    @RequestMapping(value = "/downloadPhoto")
+    @ResponseBody
+    private String downloadPhoto(HttpServletRequest request, HttpServletResponse resp)throws IOException{
+
+        System.out.println("图片下载");
+
+        //获取上传文件的目录
+        String path =request.getSession().getServletContext().getRealPath("/");
+
+        String newPath=path.substring(0,path.indexOf("PhotoAlbum_SSM_war_exploded"))+"img\\";
+        System.out.println(newPath);
+//        String path = getServletContext().getRealPath("/") + "upload/images";
+        String filename = request.getParameter("photoUrl");
+        System.out.println(filename);
+
+        // System.out.println("路径：" + path + "\t\n文件名：" + filename);
+        File file = new File(newPath,filename);
+        //如果文件夹存在
+        if (file.exists()) {
+            //由于下载的时候与浏览器的编码不符，浏览器不能识别中文编码，这里要进行转换
+
+            resp.setContentType("application/x-msdownload");
+            resp.setHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
+            InputStream inputStream = new FileInputStream(file);
+            ServletOutputStream outputStream = resp.getOutputStream();
+            byte b[] = new byte[1024];
+            int n;
+            while ((n = inputStream.read(b)) != -1) {
+                outputStream.write(b, 0, n);
+            }
+            outputStream.close();
+            inputStream.close();
+
+
+        }
+            return null;
+    }
+
 
 }

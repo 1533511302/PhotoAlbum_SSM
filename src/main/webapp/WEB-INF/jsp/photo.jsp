@@ -103,12 +103,6 @@
 
                 }
 
-               /* $(".albums-tab-thumb").find("img").click(function () {
-                    alert(this.width);
-                    alert(this.height);
-
-
-                });*/
 
 
     </script>
@@ -142,6 +136,7 @@
 
 
                         <div class="albums-tab-text">${photo.photoName}<span>(${photo.introduce})</span></div>
+               <div class="albums-tab-text"><span style="background:palevioletred;"  href="downloadPhoto?photoUrl=${photo.photoUrl}" >下载</span>   <span>删除</span></div>
 
                 </div>
            </c:forEach>
