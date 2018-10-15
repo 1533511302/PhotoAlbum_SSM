@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO album (albumname,userid,introduce) VALUES (#{albumName},#{userId},#{introduce})
 	</insert>
 
-	<select id="deleteAlbumByAlbumId" resultType="int">
-		DELETE from album where albumid=#{albumid}
-	</select>
+	<delete id="deleteAlbumByAlbumId" >
+		DELETE from album WHERE albumid=#{albumId}
+	</delete>
 </mapper>

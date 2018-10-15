@@ -82,6 +82,7 @@
                     </div>
                 </c:if>
                 <div class="albums-tab-text">${album.albumName}<span>(${album.introduce})</span></div>
+                <div class="albums-tab-text"><a style="background:palevioletred;"  href="deleteAlbum?albumId=${album.albumId}">删除</a></div>
             </div>
         </c:forEach>
 <%%>
