@@ -28,6 +28,11 @@
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 
+
+	<!-- Springmvc的异常处理器 -->
+	<bean class="top.maniy.exception.CustomExceptionResolve"></bean>
+
+
 	<!-- Springmvc拦截器 -->
 	<mvc:interceptors>
 	<!-- 多个拦截器 -->

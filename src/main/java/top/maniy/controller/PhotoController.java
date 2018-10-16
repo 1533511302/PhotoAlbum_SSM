@@ -3,6 +3,7 @@ package top.maniy.controller;
 import com.sun.xml.internal.ws.wsdl.writer.document.Part;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,9 +56,16 @@ public class PhotoController {
         String fileName=pictureFile.getOriginalFilename();// 文件原名称
 
         //获取上传文件的目录
-        String path =request.getSession().getServletContext().getRealPath("/");
 
-        String newPath=path.substring(0,path.indexOf("PhotoAlbum_SSM_war_exploded"))+"img\\";
+         String path=request.getSession().getServletContext().getRealPath("/");
+
+        String newPath= null;
+        try {
+            newPath = path.substring(0,path.indexOf("PhotoAlbum_SSM_war_exploded"))+"img\\";
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new MailSendException("图片路径不正确");
+        }
 
         //获取图片后缀
         String ext= FilenameUtils.getExtension(fileName);
